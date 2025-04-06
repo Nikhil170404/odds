@@ -2,7 +2,7 @@ services:
   - type: web
     name: cricket-odds-api
     env: docker
-    plan: standard
+    plan: free
     dockerfilePath: ./Dockerfile
     envVars:
       - key: PORT
@@ -10,8 +10,5 @@ services:
       - key: RENDER
         value: true
       - key: DATA_DIR
-        value: /var/data
-    disk:
-      name: data
-      mountPath: /var/data
-      sizeGB: 1
+        value: /app/data  # Changed to use app directory since free tier doesn't support persistent disks
+    autoDeploy: true
